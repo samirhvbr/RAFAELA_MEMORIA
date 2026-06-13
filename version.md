@@ -1,6 +1,6 @@
 # Versão — Jogo da Memória da Rafaela
 
-**Versão atual:** `0.1.2`
+**Versão atual:** `0.1.3`
 
 > Esta versão é a fonte da verdade do projeto e é lida em runtime via
 > `config('app.version')` — a aplicação extrai o **primeiro número semver
@@ -56,6 +56,16 @@ entrega). Commits adicionais da mesma entrega repetem a versão sem novo bump.
 
 > Ordem decrescente (mais recente no topo). Cada entrada lista as mudanças e os
 > gatilhos que justificaram o bump.
+
+### `0.1.3` — 2026-06-13 — Permissões: deploy-user vs FPM-user
+
+- `docs/DEPLOY.md` §6: receita robusta para quando o usuário de deploy (ex.:
+  `b3sys`) é diferente do usuário do PHP-FPM (ex.: `www-data`) — dono = deploy,
+  **grupo = FPM**, `chmod 2775` (setgid). Resolve `Permission denied` em
+  `storage/logs/laravel.log` e `storage/framework/sessions/...`.
+- Troubleshooting atualizado para cobrir os três erros de escrita em `storage/`.
+
+_Gatilho:_ alteração de documentação de deploy.
 
 ### `0.1.2` — 2026-06-13 — Documentação de permissões do deploy
 
