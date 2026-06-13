@@ -63,7 +63,10 @@ cd /var/www/jogo-rafaela
 composer install --no-dev --optimize-autoloader
 
 # Assets (Vite → public/build)
-npm ci
+# Na PRIMEIRA vez use `npm install` (gera o package-lock.json — o repo ainda
+# não tem um). Depois de commitar o lockfile, deploys seguintes podem usar
+# `npm ci` (instalação reprodutível). O deploy/deploy.sh já decide sozinho.
+npm install
 npm run build
 ```
 
@@ -177,7 +180,8 @@ cd /var/www/jogo-rafaela
 ./deploy/deploy.sh
 ```
 
-Ele executa: `git pull` → `composer install --no-dev` → `npm ci && npm run build`
+Ele executa: `git pull` → `composer install --no-dev` →
+`npm ci` (ou `npm install` se não houver lockfile) `&& npm run build`
 → `migrate --force` → recache de config/route/view → ajuste de permissões.
 
 ---
@@ -187,6 +191,8 @@ Ele executa: `git pull` → `composer install --no-dev` → `npm ci && npm run b
 | Sintoma | Causa provável | Ação |
 |---|---|---|
 | `500` em branco | permissão de `storage/` | passo 6; ver `storage/logs/laravel.log` |
+| `npm ci` falha (EUSAGE) | repo sem `package-lock.json` | rode `npm install` (gera o lockfile); commite-o depois |
+| `vite: not found` no build | dependências Node não instaladas | rode `npm install` antes de `npm run build` |
 | CSS/JS não carregam | `npm run build` não rodou | rode o build; confirme `public/build/manifest.json` |
 | Login nunca entra | `ADMIN_PASSWORD_HASH` vazio/errado | regenere o hash (passo 4) e `config:clear` |
 | Mudança no `.env` ignorada | config em cache | `php artisan config:clear` |

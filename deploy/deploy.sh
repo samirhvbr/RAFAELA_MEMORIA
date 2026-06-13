@@ -17,7 +17,12 @@ echo "▶ Dependências PHP..."
 composer install --no-dev --optimize-autoloader
 
 echo "▶ Assets (Vite)..."
-npm ci
+if [ -f package-lock.json ]; then
+    npm ci
+else
+    # Primeira vez (sem lockfile): gera o package-lock.json e instala.
+    npm install
+fi
 npm run build
 
 echo "▶ Migrations..."

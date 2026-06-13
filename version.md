@@ -1,6 +1,6 @@
 # Versão — Jogo da Memória da Rafaela
 
-**Versão atual:** `0.1.0`
+**Versão atual:** `0.1.1`
 
 > Esta versão é a fonte da verdade do projeto e é lida em runtime via
 > `config('app.version')` — a aplicação extrai o **primeiro número semver
@@ -56,6 +56,15 @@ entrega). Commits adicionais da mesma entrega repetem a versão sem novo bump.
 
 > Ordem decrescente (mais recente no topo). Cada entrada lista as mudanças e os
 > gatilhos que justificaram o bump.
+
+### `0.1.1` — 2026-06-13 — Correção do build de assets no deploy
+
+- `deploy/deploy.sh` e `docs/DEPLOY.md`: usar `npm install` quando não há
+  `package-lock.json` (o `npm ci` exige o lockfile) e cair para `npm ci` quando
+  ele existir. Corrige o erro `EUSAGE`/`vite: not found` na primeira publicação.
+- `docs/DEPLOY.md`: novas linhas de troubleshooting para esses dois erros.
+
+_Gatilho:_ alteração de configuração de deploy.
 
 ### `0.1.0` — 2026-06-12 — Implementação inicial
 
