@@ -1,6 +1,6 @@
 # Versão — Jogo da Memória da Rafaela
 
-**Versão atual:** `0.1.4`
+**Versão atual:** `0.1.5`
 
 > Esta versão é a fonte da verdade do projeto e é lida em runtime via
 > `config('app.version')` — a aplicação extrai o **primeiro número semver
@@ -56,6 +56,14 @@ entrega). Commits adicionais da mesma entrega repetem a versão sem novo bump.
 
 > Ordem decrescente (mais recente no topo). Cada entrada lista as mudanças e os
 > gatilhos que justificaram o bump.
+
+### `0.1.5` — 2026-06-18 — Limpeza: remove README de outro projeto
+
+- Removido `README copy.md` da raiz — o arquivo continha o README do **ShvTerm**
+  (cliente SSH/SFTP), não pertencia a este projeto e poluía a documentação.
+- `CLAUDE.md`: removida a referência a `README copy.md` na lista de "DEV Files".
+
+_Gatilho:_ limpeza de documentação/arquivo do repositório.
 
 ### `0.1.4` — 2026-06-13 — Correção: cartas não viravam / sem fundo
 

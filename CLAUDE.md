@@ -186,7 +186,7 @@ php artisan optimize:clear
 ## DEV Files (não vão para produção)
 
 `.env`, `.env.*`, `storage/`, `bootstrap/cache/`, `.git/`, `vendor/`,
-`node_modules/`, `public/build/`, `.claude/`, `README copy.md`, `README.md`,
+`node_modules/`, `public/build/`, `.claude/`, `README.md`,
 `CLAUDE.md`, `SECURITY_GUIDELINES.md`, `.vscode/`.
 
 ---
